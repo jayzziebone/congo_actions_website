@@ -1,19 +1,19 @@
 /**
- * CONGO ACTIONS — PHILANTHROPIC CAUSES, NGOS & CAMPAIGNS WEBSITE
- * Focuses on humanitarian impact, verified partner NGOs, active campaigns,
- * a carousel slider for payment options, and a brief mobile app overview.
+ * CONGO ACTIONS — SITE PHILANTHROPIQUE (CAUSES, ONG & CAMPAGNES)
+ * Met en lumière l'impact humanitaire, les ONG partenaires vérifiées,
+ * les campagnes actives, le carrousel des moyens de paiement et l'application mobile.
  */
 
 const EXCHANGE_RATE_CDF_PER_USD = 2800;
 
-let currentCurrency = 'USD'; // 'USD' or 'CDF'
+let currentCurrency = 'USD'; // 'USD' ou 'CDF'
 let activeNgoFilter = 'ALL';
 let activeCampFilter = 'ALL';
 let currentCarouselSlide = 0;
 const TOTAL_CAROUSEL_SLIDES = 4;
 
 /* ==========================================================================
-   1. VERIFIED AFFILIATED NGOS DIRECTORY
+   1. RÉPERTOIRE DES ONG AFFILIÉES VÉRIFIÉES
    ========================================================================== */
 const AFFILIATED_NGOS = [
   {
@@ -21,20 +21,20 @@ const AFFILIATED_NGOS = [
     name: 'Fondation Panzi (Dr. Denis Mukwege)',
     legalRegistrationNumber: 'Arrêté Ministériel N° 045/CAB/2021',
     sector: 'HEALTH',
-    sectorLabel: 'Health & Maternal Care',
+    sectorLabel: 'Santé & Soins Maternels',
     icon: '🏥',
-    location: 'Bukavu, South Kivu, DRC',
+    location: 'Bukavu, Sud-Kivu, RDC',
     missionStatement:
-      'Holistic medical care, safe maternal delivery, surgical care, psychological recovery, and community support for women, mothers, and children in Eastern DRC.',
+      'Soins médicaux holistiques, maternité sécurisée, interventions chirurgicales, accompagnement psychologique et soutien communautaire pour les mères, les femmes et les enfants à l’Est de la RDC.',
     contactEmail: 'contact@fondationpanzidrc.org',
     contactPhone: '+243 998 877 665',
-    impactHighlight: '40% Partner in the Eastern DRC Emergency Relief Pool',
-    programsSummary: 'Maternal Care • Neonatal Units • Surgical Recovery',
+    impactHighlight: 'Partenaire à 40 % du Fonds d’Urgence de l’Est de la RDC',
+    programsSummary: 'Soins Maternels • Unités Néonatales • Chirurgie',
     verificationDocs: [
-      'Arrêté Ministériel N° 045/CAB/2021 (Verified)',
-      'Certificat F92 — Ministry of Justice (Verified)',
-      'Notarized Hospital & Foundation Charter (Verified)',
-      'Official NGO Bank & Mobile Money Account (Verified)'
+      'Arrêté Ministériel N° 045/CAB/2021 (Vérifié)',
+      'Certificat F92 — Ministère de la Justice (Vérifié)',
+      'Statuts Notariés de la Fondation & Hôpital (Vérifiés)',
+      'Compte Bancaire & Mobile Money Officiel de l’ONG (Vérifié)'
     ]
   },
   {
@@ -42,20 +42,20 @@ const AFFILIATED_NGOS = [
     name: 'Kivu Clean Water Initiative',
     legalRegistrationNumber: 'Certificat F92-JUST-2019-KIVU',
     sector: 'EMERGENCY',
-    sectorLabel: 'Clean Water & Emergency Relief',
+    sectorLabel: 'Eau Potable & Urgence',
     icon: '💧',
-    location: 'Goma, North & South Kivu, DRC',
+    location: 'Goma, Nord & Sud-Kivu, RDC',
     missionStatement:
-      'Drilling sustainable solar-powered deep water boreholes and building clean drinking water stations to protect displaced families and children from water-borne illness.',
+      'Forage de puits d’eau profonds à énergie solaire et installation de bornes-fontaines d’eau potable pour protéger les familles déplacées et les enfants contre le choléra et les maladies hydriques.',
     contactEmail: 'info@kivuclearwater.org',
     contactPhone: '+243 812 345 678',
-    impactHighlight: '35% Partner in the Eastern DRC Emergency Relief Pool',
-    programsSummary: 'Solar Boreholes • Clean Water Stations • Hygiene Kits',
+    impactHighlight: 'Partenaire à 35 % du Fonds d’Urgence de l’Est de la RDC',
+    programsSummary: 'Forages Solaires • Bornes-Fontaines • Kits d’Hygiène',
     verificationDocs: [
-      'Arrêté Ministériel Hydraulics & Relief (Verified)',
-      'Certificat F92-JUST-2019-KIVU (Verified)',
-      'Notarized Non-Profit Bylaws — Goma (Verified)',
-      'Official NGO Bank & M-Pesa Account (Verified)'
+      'Arrêté Ministériel Hydraulique & Secours (Vérifié)',
+      'Certificat F92-JUST-2019-KIVU (Vérifié)',
+      'Statuts Notariés ASBL — Goma (Vérifiés)',
+      'Compte Bancaire & M-Pesa Officiel de l’ONG (Vérifié)'
     ]
   },
   {
@@ -63,20 +63,20 @@ const AFFILIATED_NGOS = [
     name: 'Orphelinat de Kinshasa (Ngaliema)',
     legalRegistrationNumber: 'Certificat F92-JUST-2022-KIN',
     sector: 'CHILDREN',
-    sectorLabel: 'Children & Orphan Care',
+    sectorLabel: 'Enfance & Orphelinats',
     icon: '🧒🏾',
-    location: 'Ngaliema, Kinshasa, DRC',
+    location: 'Ngaliema, Kinshasa, RDC',
     missionStatement:
-      'Providing loving residential shelter, three nutritious daily meals, pediatric healthcare, clothing, and primary school tuition for 140 orphaned children in Kinshasa.',
+      'Offrir un foyer d’accueil chaleureux, trois repas équilibrés par jour, un suivi pédiatrique, des vêtements et la scolarisation primaire à 140 enfants orphelins à Kinshasa.',
     contactEmail: 'contact@orphelinatkinshasa.cd',
     contactPhone: '+243 891 234 567',
-    impactHighlight: '25% Partner in the Eastern DRC Emergency Relief Pool',
-    programsSummary: 'Child Nutrition • Safe Shelter • Primary Schooling',
+    impactHighlight: 'Partenaire à 25 % du Fonds d’Urgence de l’Est de la RDC',
+    programsSummary: 'Nutrition Infantile • Hébergement • École Primaire',
     verificationDocs: [
-      'Arrêté Ministériel Social & Family Affairs (Verified)',
-      'Certificat F92-JUST-2022-KIN (Verified)',
-      'Notarized Child Protection Charter (Verified)',
-      'Official NGO Bank & Orange Money Account (Verified)'
+      'Arrêté Ministériel Affaires Sociales & Famille (Vérifié)',
+      'Certificat F92-JUST-2022-KIN (Vérifié)',
+      'Statuts Notariés de Protection de l’Enfance (Vérifiés)',
+      'Compte Bancaire & Orange Money Officiel de l’ONG (Vérifié)'
     ]
   },
   {
@@ -84,48 +84,48 @@ const AFFILIATED_NGOS = [
     name: 'Sauvons Congo',
     legalRegistrationNumber: 'Certificat F92-JUST-2026-KIN',
     sector: 'EDUCATION',
-    sectorLabel: 'Youth & Education',
+    sectorLabel: 'Jeunesse & Éducation',
     icon: '🎓',
-    location: 'Masina & Limete, Kinshasa, DRC',
+    location: 'Masina & Limete, Kinshasa, RDC',
     missionStatement:
-      'Empowering underprivileged Congolese youth and high school graduates with solar-powered computer centers, internet access, coding education, and job readiness.',
+      'Accompagner les jeunes diplômés congolais issus de milieux défavorisés grâce à des salles informatiques solaires, un accès Internet haut débit, des cours de programmation et d’insertion professionnelle.',
     contactEmail: 'contact@sauvonscongo.org',
     contactPhone: '+243 999 123 456',
-    impactHighlight: '100% Dedicated Youth Education Campaigns',
-    programsSummary: 'Solar Computer Labs • Youth Coding • School Supplies',
+    impactHighlight: 'Campagnes 100 % dédiées à l’éducation des jeunes',
+    programsSummary: 'Laboratoires Solaires • Programmation • Fournitures Scolaires',
     verificationDocs: [
-      'Arrêté Ministériel Youth & Education (Verified)',
-      'Certificat F92-JUST-2026-KIN (Verified)',
-      'Notarized Non-Profit Statutes (Verified)',
-      'Official NGO Bank & Mobile Money Account (Verified)'
+      'Arrêté Ministériel Jeunesse & Éducation (Vérifié)',
+      'Certificat F92-JUST-2026-KIN (Vérifié)',
+      'Statuts Notariés de l’ASBL (Vérifiés)',
+      'Compte Bancaire & Mobile Money Officiel de l’ONG (Vérifié)'
     ]
   }
 ];
 
 /* ==========================================================================
-   2. ACTIVE HUMANITARIAN CAMPAIGNS
+   2. CAMPAGNES HUMANITAIRES ACTIVES
    ========================================================================== */
 const CAMPAIGNS_DATA = [
   {
     id: 'camp-eastern-pool',
-    title: 'Eastern DRC Emergency & Health Relief Pool',
+    title: 'Fonds d’Urgence et de Santé de l’Est de la RDC',
     subtitle:
-      'One shared gift supporting emergency maternal care, clean drinking water wells, and orphan nutrition across 3 verified NGOs.',
+      'Un don partagé soutenant les soins maternels d’urgence, les puits d’eau potable et la nutrition des orphelins auprès de 3 ONG vérifiées.',
     fullStory:
-      'Families and children in Eastern DRC face urgent medical and humanitarian needs. When you contribute to this Shared Relief Pool, your gift is automatically divided among three trusted local partners: 40% to Fondation Panzi for maternal and surgical care in Bukavu, 35% to Kivu Clean Water Initiative for solar water wells in Goma, and 25% to Orphelinat de Kinshasa for child nutrition and shelter.',
+      'Les familles et les enfants de l’Est de la RDC font face à des besoins médicaux et alimentaires urgents. Lorsque vous contribuez à ce Fonds Commun, votre don est automatiquement réparti entre trois partenaires locaux de confiance : 40 % à la Fondation Panzi pour les soins maternels et chirurgicaux à Bukavu, 35 % à Kivu Clean Water Initiative pour les forages d’eau solaire à Goma, et 25 % à l’Orphelinat de Kinshasa pour l’alimentation et l’hébergement des enfants.',
     impactMilestones: [
-      '120 maternal delivery kits & solar medical refrigerators delivered in Bukavu',
-      'Clean drinking water stations serving displaced mothers and children in Goma',
-      'Daily warm meals and pediatric checkups for orphaned children'
+      '120 kits d’accouchement médicalisés et réfrigérateurs solaires livrés à Bukavu',
+      'Bornes d’eau potable desservant les mères et les enfants déplacés à Goma',
+      'Repas chauds quotidiens et suivi pédiatrique pour les enfants orphelins'
     ],
     category: 'HEALTH',
-    categoryLabel: 'Emergency & Health Pool',
+    categoryLabel: 'Fonds d’Urgence & Santé',
     categoryBadgeClass: 'badge-apricot',
     isPooledFund: true,
     ngoName: 'Fondation Panzi, Kivu Clean Water & Orphelinat de Kinshasa',
     supportersCount: 412,
-    targetAmountUsdCents: 10000000, // $100,000
-    raisedAmountUsdCents: 4285000,  // $42,850
+    targetAmountUsdCents: 10000000, // 100 000 $
+    raisedAmountUsdCents: 4285000,  // 42 850 $
     targetAmountCdf: 280000000,
     raisedAmountCdf: 120000000,
     imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80',
@@ -133,120 +133,120 @@ const CAMPAIGNS_DATA = [
   },
   {
     id: 'camp-orphans-kinshasa',
-    title: 'Nutritious Meals & Primary Schooling for 140 Orphans',
+    title: 'Repas Nutritifs & Scolarisation pour 140 Orphelins',
     subtitle:
-      'Providing daily breakfast, lunch, and dinner, school uniforms, and classroom tuition for 140 children in Ngaliema.',
+      'Assurer trois repas par jour, des uniformes scolaires et les frais d’école primaire pour 140 enfants à Ngaliema.',
     fullStory:
-      'Orphelinat de Kinshasa (Ngaliema) cares for 140 orphaned and vulnerable children from infancy through primary school. Your support funds year-round fortified food staples (rice, beans, fresh fruit, and clean milk), new school uniforms, notebooks, and primary school tuition so every child grows up healthy and educated.',
+      'L’Orphelinat de Kinshasa (Ngaliema) accueille 140 enfants orphelins et vulnérables, de la petite enfance jusqu’à l’école primaire. Votre soutien finance toute l’année des denrées alimentaires nutritives (riz, haricots, fruits frais et lait), des uniformes scolaires neufs, des cahiers ainsi que les frais de scolarité afin que chaque enfant grandisse en bonne santé et sur les bancs de l’école.',
     impactMilestones: [
-      '420 nutritious meals prepared every single day for 140 resident children',
-      '100% of school-age children enrolled in local primary classrooms',
-      'Mosquito nets, clean bedding, and monthly pediatric nurse visits'
+      '420 repas nutritifs préparés chaque jour pour les 140 enfants du foyer',
+      '100 % des enfants en âge scolaire inscrits à l’école primaire locale',
+      'Moustiquaires, literie propre et visites mensuelles d’un infirmier pédiatrique'
     ],
     category: 'CHILDREN',
-    categoryLabel: 'Children & Orphans',
+    categoryLabel: 'Enfance & Orphelinats',
     categoryBadgeClass: 'badge-buttercream',
     isPooledFund: false,
     ngoName: 'Orphelinat de Kinshasa (Ngaliema)',
     supportersCount: 198,
-    targetAmountUsdCents: 2500000, // $25,000
-    raisedAmountUsdCents: 1640000, // $16,400
+    targetAmountUsdCents: 2500000, // 25 000 $
+    raisedAmountUsdCents: 1640000, // 16 400 $
     targetAmountCdf: 70000000,
     raisedAmountCdf: 45920000,
     imageUrl: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=1000&q=80',
-    location: 'Ngaliema, Kinshasa, DRC'
+    location: 'Ngaliema, Kinshasa, RDC'
   },
   {
     id: 'camp-solar-water-goma',
-    title: 'Clean Solar Water for 10,000 Displaced Families',
+    title: 'Eau Potable Solaire pour 10 000 Familles Déplacées',
     subtitle:
-      'Drilling 4 deep solar-powered water boreholes and clean tap stands in Mugunga camps outside Goma.',
+      'Forage de 4 puits d’eau profonds à énergie solaire et bornes-fontaines dans les camps de Mugunga près de Goma.',
     fullStory:
-      'Access to clean, safe drinking water is the single most effective way to prevent cholera and protect young children in displaced communities around Goma. Kivu Clean Water Initiative is drilling four 120-meter solar-powered boreholes equipped with filtration and multi-tap collection points so mothers and children no longer have to walk miles for unsafe lake water.',
+      'L’accès à une eau propre et salubre est le moyen le plus efficace de prévenir le choléra et de protéger les jeunes enfants dans les camps de déplacés autour de Goma. Kivu Clean Water Initiative réalise quatre forages solaires à 120 mètres de profondeur équipés de systèmes de filtration et de rampes de distribution pour que les mères et les enfants n’aient plus à parcourir des kilomètres.',
     impactMilestones: [
-      '2 solar boreholes already operational and pumping 15,000 liters daily',
-      'Zero fuel cost thanks to high-efficiency solar arrays',
-      'Community water committees trained for long-term maintenance'
+      '2 forages solaires déjà opérationnels distribuant 15 000 litres d’eau par jour',
+      'Autonomie énergétique totale grâce aux panneaux solaires haute performance',
+      'Comités locaux formés à l’entretien durable des stations d’eau'
     ],
     category: 'EMERGENCY',
-    categoryLabel: 'Clean Water & Relief',
+    categoryLabel: 'Eau Potable & Urgence',
     categoryBadgeClass: 'badge-mint',
     isPooledFund: false,
     ngoName: 'Kivu Clean Water Initiative',
     supportersCount: 326,
-    targetAmountUsdCents: 6000000, // $60,000
-    raisedAmountUsdCents: 3890000, // $38,900
+    targetAmountUsdCents: 6000000, // 60 000 $
+    raisedAmountUsdCents: 3890000, // 38 900 $
     targetAmountCdf: 168000000,
     raisedAmountCdf: 108920000,
     imageUrl: 'https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=1000&q=80',
-    location: 'Mugunga Camp, Goma, DRC'
+    location: 'Camp de Mugunga, Goma, RDC'
   },
   {
     id: 'camp-code-for-congo',
-    title: 'Code for Congo: Solar IT Labs for 500 Youths',
+    title: 'Code for Congo : Salles Informatiques Solaires pour 500 Jeunes',
     subtitle:
-      'Equipping two solar-powered community computer centers in Kinshasa (Masina & Limete) for young graduates.',
+      'Équipement de deux centres informatiques communautaires à énergie solaire à Kinshasa (Masina & Limete).',
     fullStory:
-      'Thousands of bright young Congolese students graduate high school without ever having access to a computer or reliable electricity. Sauvons Congo is outfitting two solar-powered learning centers in Masina and Limete with laptops, satellite internet, and hands-on courses in digital literacy, software development, and office skills.',
+      'Des milliers de jeunes diplômés congolais terminent leurs études secondaires sans jamais avoir eu accès à un ordinateur ou à une connexion électrique stable. Sauvons Congo équipe deux centres d’apprentissage solaires à Masina et Limete avec des ordinateurs portables, une connexion Internet par satellite et des formations gratuites aux métiers du numérique.',
     impactMilestones: [
-      '40 laptops and solar battery banks installed in the first Masina classroom',
-      'Free 6-month digital skills & coding bootcamps for youth aged 16–24',
-      'Dedicated mentorship and local employment placement support'
+      '40 ordinateurs et batteries solaires installés dans le premier centre de Masina',
+      'Formations gratuites de 6 mois au numérique et à la programmation (16–24 ans)',
+      'Mentorat et accompagnement vers l’emploi et le travail indépendant'
     ],
     category: 'EDUCATION',
-    categoryLabel: 'Youth & Education',
+    categoryLabel: 'Jeunesse & Éducation',
     categoryBadgeClass: 'badge-cerulean',
     isPooledFund: false,
     ngoName: 'Sauvons Congo',
     supportersCount: 164,
-    targetAmountUsdCents: 3500000, // $35,000
-    raisedAmountUsdCents: 1820000, // $18,200
+    targetAmountUsdCents: 3500000, // 35 000 $
+    raisedAmountUsdCents: 1820000, // 18 200 $
     targetAmountCdf: 98000000,
     raisedAmountCdf: 50960000,
     imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80',
-    location: 'Masina & Limete, Kinshasa, DRC'
+    location: 'Masina & Limete, Kinshasa, RDC'
   },
   {
     id: 'camp-panzi-maternal',
-    title: 'Safe Childbirth & Neonatal Care Kits in South Kivu',
+    title: 'Maternité Sans Risque & Soins Néonatals au Sud-Kivu',
     subtitle:
-      'Supplying sterile delivery kits, solar incubators, and postnatal care for 600 expectant mothers in Bukavu.',
+      'Fourniture de kits d’accouchement stériles, couveuses solaires et soins postnatals pour 600 futures mamans à Bukavu.',
     fullStory:
-      'Led by Fondation Panzi in Bukavu, this campaign equips maternity wards and rural outreach clinics in South Kivu with sterile childbirth kits, solar-powered neonatal warmers for premature newborns, and essential medications so every mother can give birth safely with dignity.',
+      'Menée par la Fondation Panzi à Bukavu, cette campagne équipe les maternités et cliniques rurales du Sud-Kivu en kits d’accouchement stériles, couveuses solaires pour les nouveau-nés prématurés et médicaments essentiels afin que chaque mère puisse donner la vie en toute sécurité.',
     impactMilestones: [
-      '600 sterile maternal delivery kits funded for expectant mothers',
-      '24/7 solar backup power for neonatal incubators in Bukavu',
-      'Free postnatal nutrition and newborn immunization follow-ups'
+      '600 kits d’accouchement stériles financés pour les futures mamans',
+      'Alimentation solaire 24h/24 pour les couveuses néonatales à Bukavu',
+      'Suivi nutritionnel postnatal et vaccination gratuite des nouveau-nés'
     ],
     category: 'HEALTH',
-    categoryLabel: 'Healthcare & Panzi',
+    categoryLabel: 'Santé & Hôpital Panzi',
     categoryBadgeClass: 'badge-apricot',
     isPooledFund: false,
     ngoName: 'Fondation Panzi (Dr. Denis Mukwege)',
     supportersCount: 245,
-    targetAmountUsdCents: 4000000, // $40,000
-    raisedAmountUsdCents: 2240000, // $22,400
+    targetAmountUsdCents: 4000000, // 40 000 $
+    raisedAmountUsdCents: 2240000, // 22 400 $
     targetAmountCdf: 112000000,
     raisedAmountCdf: 62720000,
     imageUrl: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80',
-    location: 'Bukavu, South Kivu, DRC'
+    location: 'Bukavu, Sud-Kivu, RDC'
   }
 ];
 
 /* ==========================================================================
-   3. CURRENCY FORMATTING
+   3. FORMATAGE DES MONTANTS EN FRANÇAIS
    ========================================================================== */
 function formatCampaignAmount(usdCents, cdfUnits, currency = currentCurrency) {
   if (currency === 'USD') {
     const usd = Math.round(usdCents / 100);
-    return '$' + new Intl.NumberFormat('en-US').format(usd);
+    return new Intl.NumberFormat('fr-FR').format(usd) + ' $';
   } else {
-    return new Intl.NumberFormat('en-US').format(cdfUnits) + ' FC';
+    return new Intl.NumberFormat('fr-FR').format(cdfUnits) + ' FC';
   }
 }
 
 /* ==========================================================================
-   4. RENDER ACTIVE CAMPAIGNS
+   4. AFFICHAGE DES CAMPAGNES ACTIVES
    ========================================================================== */
 function renderCampaigns() {
   const gridEl = document.getElementById('campaigns-grid');
@@ -280,7 +280,7 @@ function renderCampaigns() {
             <img src="${camp.imageUrl}" alt="${camp.title}" loading="lazy" />
             <div class="camp-badges-top">
               <span class="camp-cat-pill ${camp.categoryBadgeClass}">${camp.categoryLabel}</span>
-              <span class="camp-ver-pill">✓ Verified NGO</span>
+              <span class="camp-ver-pill">✓ ONG Vérifiée</span>
             </div>
           </div>
 
@@ -289,31 +289,31 @@ function renderCampaigns() {
               <span>📍 ${camp.location}</span>
               ${
                 camp.isPooledFund
-                  ? '<span class="camp-pool-tag">🤝 Shared 3-NGO Pool</span>'
-                  : `<span>❤️ ${camp.supportersCount} Supporters</span>`
+                  ? '<span class="camp-pool-tag">🤝 Fonds Partagé (3 ONG)</span>'
+                  : `<span>❤️ ${camp.supportersCount} Donateurs</span>`
               }
             </div>
 
             <h3>${camp.title}</h3>
-            <div class="camp-ngo-byline">By ${camp.ngoName}</div>
+            <div class="camp-ngo-byline">Par ${camp.ngoName}</div>
             <p class="camp-subtitle">${camp.subtitle}</p>
 
             <div class="camp-progress-box">
-              <div class="progress-bar-outer" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="${camp.title} fundraising progress">
+              <div class="progress-bar-outer" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Progression de la collecte ${camp.title}">
                 <div class="progress-bar-inner" style="width: ${pct}%"></div>
               </div>
               <div class="camp-progress-nums">
-                <span><strong>${raisedFormatted}</strong> raised of ${targetFormatted}</span>
-                <strong>${pct}%</strong>
+                <span><strong>${raisedFormatted}</strong> collectés sur ${targetFormatted}</span>
+                <strong>${pct} %</strong>
               </div>
             </div>
 
             <div class="camp-actions-row">
               <button type="button" class="btn btn-secondary read-camp-story-btn" data-camp-id="${camp.id}">
-                Read Story
+                Lire l'histoire
               </button>
-              <button type="button" class="btn btn-warm open-app-modal-btn" data-context="Support '${camp.title}' in the Congo Actions App">
-                Donate in App →
+              <button type="button" class="btn btn-warm open-app-modal-btn" data-context="Soutenir « ${camp.title} » dans l'application Congo Actions">
+                Donner via l'App →
               </button>
             </div>
           </div>
@@ -332,7 +332,7 @@ function renderCampaigns() {
 }
 
 /* ==========================================================================
-   5. RENDER AFFILIATED NGOS DIRECTORY
+   5. AFFICHAGE DU RÉPERTOIRE DES ONG AFFILIÉES
    ========================================================================== */
 function renderAffiliatedNgos() {
   const gridEl = document.getElementById('ngo-directory-grid');
@@ -350,7 +350,7 @@ function renderAffiliatedNgos() {
         <div>
           <div class="ngo-card-top">
             <div class="ngo-icon-box" aria-hidden="true">${ngo.icon}</div>
-            <span class="ngo-verified-pill">✓ VERIFIED NGO</span>
+            <span class="ngo-verified-pill">✓ ONG VÉRIFIÉE</span>
           </div>
           <h3>${ngo.name}</h3>
           <span class="ngo-reg-code">${ngo.legalRegistrationNumber}</span>
@@ -359,17 +359,17 @@ function renderAffiliatedNgos() {
 
         <div>
           <ul class="ngo-meta-list">
-            <li>📍 <strong>Location:</strong> ${ngo.location}</li>
-            <li>🌟 <strong>Focus:</strong> ${ngo.programsSummary}</li>
-            <li>🤝 <strong>Role:</strong> ${ngo.impactHighlight}</li>
+            <li>📍 <strong>Siège :</strong> ${ngo.location}</li>
+            <li>🌟 <strong>Domaines :</strong> ${ngo.programsSummary}</li>
+            <li>🤝 <strong>Rôle :</strong> ${ngo.impactHighlight}</li>
           </ul>
 
           <div class="ngo-card-actions">
             <button type="button" class="btn btn-secondary inspect-ngo-btn" data-ngo-id="${ngo.id}">
-              NGO Profile
+              Profil de l'ONG
             </button>
-            <button type="button" class="btn btn-primary open-app-modal-btn" data-context="Support ${ngo.name} in the Congo Actions App">
-              Support in App
+            <button type="button" class="btn btn-primary open-app-modal-btn" data-context="Soutenir ${ngo.name} dans l'application Congo Actions">
+              Soutenir via l'App
             </button>
           </div>
         </div>
@@ -388,7 +388,7 @@ function renderAffiliatedNgos() {
 }
 
 /* ==========================================================================
-   6. PAYMENT OPTIONS CAROUSEL SLIDER
+   6. CARROUSEL DES MOYENS DE PAIEMENT
    ========================================================================== */
 function goToCarouselSlide(index) {
   const track = document.getElementById('payment-carousel-track');
@@ -425,7 +425,6 @@ function initPaymentCarousel() {
     });
   });
 
-  // Touch swipe support on mobile/tablet
   if (viewport) {
     let startX = 0;
     viewport.addEventListener(
@@ -453,7 +452,7 @@ function initPaymentCarousel() {
 }
 
 /* ==========================================================================
-   7. BRIEF SHARED GIFT CALCULATOR (Integrated in Mobile App Section)
+   7. APERÇU INTERACTIF DU DON PARTAGÉ (Section Application Mobile)
    ========================================================================== */
 function updateSharedGiftPreview() {
   const inputEl = document.getElementById('sim-amount-input');
@@ -474,11 +473,10 @@ function updateSharedGiftPreview() {
     const orphan = rawVal * 0.25;
 
     const fmtUsd = (val) =>
-      '$' +
-      val.toLocaleString('en-US', {
+      val.toLocaleString('fr-FR', {
         minimumFractionDigits: val % 1 === 0 ? 0 : 2,
         maximumFractionDigits: 2
-      });
+      }) + ' $';
 
     donutTotalEl.textContent = fmtUsd(rawVal);
     amtPanziEl.textContent = fmtUsd(panzi);
@@ -489,7 +487,7 @@ function updateSharedGiftPreview() {
     const kivuCdf = Math.round(rawVal * 0.35);
     const orphanCdf = Math.round(rawVal) - panziCdf - kivuCdf;
 
-    const fmtCdf = (val) => Math.round(val).toLocaleString('en-US') + ' FC';
+    const fmtCdf = (val) => Math.round(val).toLocaleString('fr-FR') + ' FC';
 
     donutTotalEl.textContent = fmtCdf(rawVal);
     amtPanziEl.textContent = fmtCdf(panziCdf);
@@ -499,7 +497,7 @@ function updateSharedGiftPreview() {
 }
 
 /* ==========================================================================
-   8. MODALS: NGO PROFILE, CAMPAIGN STORY & APP DOWNLOAD
+   8. MODALES : PROFIL ONG, HISTOIRE DE CAMPAGNE & TÉLÉCHARGEMENT APP
    ========================================================================== */
 function openNgoProfileModal(ngoId) {
   const ngo = AFFILIATED_NGOS.find((n) => n.id === ngoId);
@@ -510,26 +508,26 @@ function openNgoProfileModal(ngoId) {
   document.getElementById('ngo-modal-title').textContent = ngo.name;
   document.getElementById('ngo-modal-support-btn').setAttribute(
     'data-context',
-    `Support ${ngo.name} via the Congo Actions Mobile App`
+    `Soutenir ${ngo.name} via l'application mobile Congo Actions`
   );
 
   const bodyEl = document.getElementById('ngo-modal-body');
   bodyEl.innerHTML = `
     <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-block-end:0.9rem;">
-      <span class="ngo-verified-pill">✓ OFFICIALLY VERIFIED NGO</span>
+      <span class="ngo-verified-pill">✓ ONG OFFICIELLEMENT VÉRIFIÉE</span>
       <span class="slide-pill">📍 ${ngo.location}</span>
       <span class="slide-pill">${ngo.sectorLabel}</span>
     </div>
     <p style="color:var(--text-slate-navy); font-size:0.95rem; margin-block-end:1rem;">${ngo.missionStatement}</p>
 
     <div class="info-panel-box">
-      <div class="info-panel-title">Verified Legal Registration &amp; Compliance Documents</div>
+      <div class="info-panel-title">Documents Légaux &amp; Agréments Vérifiés</div>
       ${ngo.verificationDocs
         .map(
           (doc) => `
         <div class="info-kv-row">
           <span>📄 ${doc}</span>
-          <strong style="color:var(--mint-green);">✓ Verified</strong>
+          <strong style="color:var(--mint-green);">✓ Vérifié</strong>
         </div>
       `
         )
@@ -537,17 +535,17 @@ function openNgoProfileModal(ngoId) {
     </div>
 
     <div class="info-panel-box">
-      <div class="info-panel-title">Humanitarian Programs &amp; Contact</div>
+      <div class="info-panel-title">Programmes Humanitaires &amp; Contact</div>
       <div class="info-kv-row">
-        <span>Core Programs</span>
+        <span>Programmes clés</span>
         <strong>${ngo.programsSummary}</strong>
       </div>
       <div class="info-kv-row">
-        <span>Shared Pool Role</span>
+        <span>Rôle dans le Fonds Commun</span>
         <strong>${ngo.impactHighlight}</strong>
       </div>
       <div class="info-kv-row">
-        <span>Official Contact</span>
+        <span>Contact officiel</span>
         <strong>${ngo.contactEmail} • ${ngo.contactPhone}</strong>
       </div>
     </div>
@@ -580,15 +578,15 @@ function openCampaignStoryModal(campId) {
   document.getElementById('camp-modal-title').textContent = camp.title;
   document.getElementById('camp-modal-donate-btn').setAttribute(
     'data-context',
-    `Support '${camp.title}' in the Congo Actions App`
+    `Soutenir « ${camp.title} » dans l'application Congo Actions`
   );
 
   const bodyEl = document.getElementById('camp-modal-body');
   bodyEl.innerHTML = `
     <img src="${camp.imageUrl}" alt="${camp.title}" style="inline-size:100%; max-block-size:220px; object-fit:cover; border-radius:16px; margin-block-end:1rem;" />
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-block-end:0.75rem;">
-      <strong style="color:var(--logo-royal-blue); font-size:0.9rem;">Led by: ${camp.ngoName}</strong>
-      <span class="ngo-verified-pill">✓ Verified Cause</span>
+      <strong style="color:var(--logo-royal-blue); font-size:0.9rem;">Menée par : ${camp.ngoName}</strong>
+      <span class="ngo-verified-pill">✓ Cause Vérifiée</span>
     </div>
     <p style="color:var(--text-slate-navy); font-size:0.94rem;">${camp.fullStory}</p>
 
@@ -597,13 +595,13 @@ function openCampaignStoryModal(campId) {
         <div class="progress-bar-inner" style="width: ${pct}%"></div>
       </div>
       <div class="camp-progress-nums">
-        <span><strong>${raisedFormatted}</strong> raised of ${targetFormatted} goal</span>
-        <strong>${pct}% Funded (${camp.supportersCount} Supporters)</strong>
+        <span><strong>${raisedFormatted}</strong> collectés sur un objectif de ${targetFormatted}</span>
+        <strong>${pct} % financé (${camp.supportersCount} donateurs)</strong>
       </div>
     </div>
 
     <div class="info-panel-box">
-      <div class="info-panel-title">Key Impact Milestones</div>
+      <div class="info-panel-title">Résultats &amp; Avancées sur le Terrain</div>
       ${camp.impactMilestones
         .map(
           (m) => `
@@ -629,7 +627,7 @@ function bindAppModalTriggers(root = document) {
     if (btn.dataset.boundModal === 'true') return;
     btn.dataset.boundModal = 'true';
     btn.addEventListener('click', () => {
-      const ctx = btn.getAttribute('data-context') || 'SUPPORT THIS CAUSE IN THE APP';
+      const ctx = btn.getAttribute('data-context') || 'SOUTENIR CETTE CAUSE DANS L’APPLICATION';
       if (contextLabel) contextLabel.textContent = ctx;
       if (ngoModal && ngoModal.open) ngoModal.close();
       if (campModal && campModal.open) campModal.close();
@@ -639,52 +637,7 @@ function bindAppModalTriggers(root = document) {
 }
 
 /* ==========================================================================
-   9. CURRENCY SWITCHER ($ USD ⇄ FC CDF)
-   ========================================================================== */
-function setGlobalCurrency(newCurrency) {
-  currentCurrency = newCurrency;
-
-  document.querySelectorAll('.currency-btn').forEach((btn) => {
-    const isMatch = btn.getAttribute('data-currency') === currentCurrency;
-    btn.classList.toggle('active', isMatch);
-    btn.setAttribute('aria-pressed', String(isMatch));
-  });
-
-  // Update Hero impact metrics
-  document.querySelectorAll('.currency-value').forEach((el) => {
-    const usd = Number(el.getAttribute('data-usd') || 0);
-    const cdf = Number(el.getAttribute('data-cdf') || 0);
-    if (currentCurrency === 'USD') {
-      el.textContent = '$' + usd.toLocaleString('en-US') + '+';
-    } else {
-      el.textContent = cdf.toLocaleString('en-US') + '+ FC';
-    }
-  });
-
-  // Update preset buttons in brief shared gift preview
-  const simInput = document.getElementById('sim-amount-input');
-  document.querySelectorAll('.sim-preset-btn').forEach((btn) => {
-    const usdPreset = Number(btn.getAttribute('data-usd-preset') || 100);
-    if (currentCurrency === 'USD') {
-      btn.textContent = '$' + usdPreset.toLocaleString('en-US');
-      if (btn.classList.contains('active') && simInput) {
-        simInput.value = usdPreset;
-      }
-    } else {
-      const cdfPreset = usdPreset * EXCHANGE_RATE_CDF_PER_USD;
-      btn.textContent = cdfPreset.toLocaleString('en-US') + ' FC';
-      if (btn.classList.contains('active') && simInput) {
-        simInput.value = cdfPreset;
-      }
-    }
-  });
-
-  renderCampaigns();
-  updateSharedGiftPreview();
-}
-
-/* ==========================================================================
-   10. INITIALIZATION & EVENT LISTENERS
+   9. INITIALISATION & ÉCOUTEURS D'ÉVÉNEMENTS
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   renderCampaigns();
@@ -693,14 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateSharedGiftPreview();
   bindAppModalTriggers();
 
-  // Currency toggle buttons
-  document.querySelectorAll('.currency-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      setGlobalCurrency(btn.getAttribute('data-currency'));
-    });
-  });
-
-  // Cause Pillar cards jump to & filter Active Campaigns
+  // Cartes des piliers humanitaires -> filtre et défilement vers les campagnes
   document.querySelectorAll('[data-select-category]').forEach((card) => {
     card.addEventListener('click', () => {
       const cat = card.getAttribute('data-select-category');
@@ -716,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Campaign category filter pills
+  // Filtres des campagnes par catégorie
   document.querySelectorAll('[data-camp-filter]').forEach((pill) => {
     pill.addEventListener('click', () => {
       document.querySelectorAll('[data-camp-filter]').forEach((p) => p.classList.remove('active'));
@@ -726,7 +672,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // NGO sector filter pills
+  // Filtres des ONG par secteur
   document.querySelectorAll('[data-ngo-filter]').forEach((pill) => {
     pill.addEventListener('click', () => {
       document.querySelectorAll('[data-ngo-filter]').forEach((p) => p.classList.remove('active'));
@@ -736,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Shared gift preview presets & input
+  // Boutons de montant prédéfini et champ personnalisé du simulateur de don partagé
   const simInput = document.getElementById('sim-amount-input');
   document.querySelectorAll('.sim-preset-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -758,7 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Menu Drawer Toggle
+  // Menu mobile déroulant
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileDrawer = document.getElementById('mobile-nav-drawer');
   if (mobileMenuBtn && mobileDrawer) {
@@ -775,7 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close Modal buttons & backdrop clicks
+  // Fermeture des fenêtres modales
   const appModal = document.getElementById('app-download-modal');
   const ngoModal = document.getElementById('ngo-dossier-modal');
   const campModal = document.getElementById('campaign-story-modal');
